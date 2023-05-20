@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "TIERIMNIDA 클론",
-  "version": "1.0.0",
+  "version": "1.1.0.2305",
 
+  "action": {},
   "description": "백준 온라인 저지 문제 번호에 solved.ac 티어 색을 칠해주는 크롬 확장 프로그램",
   "icons": {
     "16": "images/icon-16.png",
@@ -12,17 +13,21 @@
   },
 
   "author": "김예환 Ye-Hwan Kim (Sam)",
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.acmicpc.net/user/*"],
-      "js": ["data.js"],
+      "js": ["scripts/data.js"],
       "run_at": "document_end"
     },
     {
       "matches": ["https://www.acmicpc.net/user/*"],
-      "js": ["script.js"],
+      "js": ["scripts/content.js"],
       "run_at": "document_idle"
     }
   ],
-  "homepage_url": "https://github.com/yehwankim23/tierimnida-clone"
+  "homepage_url": "https://github.com/yehwankim23/tierimnida-clone",
+  "permissions": ["storage"]
 }
