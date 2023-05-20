@@ -6,9 +6,13 @@
 
 ## 미리 보기
 
-![Preview](images/preview.png)
+![Unsorted](images/unsorted.png)
+
+![Sorted](images/sorted.png)
 
 ## 이용 방법
+
+확장 프로그램 아이콘을 클릭하면 난이도순 정렬을 토글합니다.
 
 ### 크롬 웹 스토어
 
