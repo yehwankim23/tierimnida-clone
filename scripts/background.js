@@ -1,7 +1,8 @@
 async function setSortByLevel(sortByLevel) {
   await chrome.storage.local.set({ sortByLevel: sortByLevel }).then(() => {
     chrome.action.setBadgeText({ text: sortByLevel ? "ON" : "OFF" });
-    chrome.action.setBadgeBackgroundColor({ color: sortByLevel ? "green" : "red" });
+    chrome.action.setBadgeTextColor({ color: "white" });
+    chrome.action.setBadgeBackgroundColor({ color: sortByLevel ? "green" : "gray" });
   });
 }
 
