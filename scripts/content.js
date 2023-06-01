@@ -83,10 +83,10 @@ for (let i = 0; i < problemLists.length; i++) {
 
 let sortedInnerHTMLs = getInnerHTMLs();
 
-chrome.storage.local.get(["sortByLevel"]).then((result) => {
-  setInnerHTMLs(result.sortByLevel);
+chrome.storage.local.get(["sortByLevel"]).then((items) => {
+  setInnerHTMLs(items.sortByLevel);
 });
 
-chrome.storage.onChanged.addListener((changes, _) => {
+chrome.storage.onChanged.addListener((changes, _areaName) => {
   setInnerHTMLs(changes.sortByLevel.newValue);
 });
