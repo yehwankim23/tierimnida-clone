@@ -13,7 +13,7 @@ async function getSortByLevel() {
 }
 
 chrome.runtime.onInstalled.addListener(async (_details) => {
-  await setSortByLevel(false);
+  await setSortByLevel(await getSortByLevel());
 });
 
 chrome.runtime.onStartup.addListener(async () => {
