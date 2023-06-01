@@ -7,12 +7,12 @@ async function setSortByLevel(sortByLevel) {
 }
 
 async function getSortByLevel() {
-  return await chrome.storage.local.get(["sortByLevel"]).then((result) => {
-    return result.sortByLevel;
+  return await chrome.storage.local.get(["sortByLevel"]).then((items) => {
+    return items.sortByLevel;
   });
 }
 
-chrome.runtime.onInstalled.addListener(async () => {
+chrome.runtime.onInstalled.addListener(async (_details) => {
   await setSortByLevel(false);
 });
 
@@ -20,6 +20,6 @@ chrome.runtime.onStartup.addListener(async () => {
   await setSortByLevel(await getSortByLevel());
 });
 
-chrome.action.onClicked.addListener(async (_) => {
+chrome.action.onClicked.addListener(async (_tab) => {
   await setSortByLevel(!(await getSortByLevel()));
 });

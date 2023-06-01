@@ -16,19 +16,24 @@ def main():
     levels = dict()
 
     for start in range(1000, 28200, 100):
-        time.sleep(15)
-        response = requests.get(API + "problem/lookup", headers=HEADERS, params={
-            "problemIds": ",".join([str(x) for x in range(start, start + 100)])}).json()
+        # noinspection PyBroadException
+        try:
+            response = requests.get(API + "problem/lookup", headers=HEADERS, params={
+                "problemIds": ",".join([str(x) for x in range(start, start + 100)])}).json()
 
-        for problem in response:
-            levels[problem["problemId"]] = problem["level"]
+            for problem in response:
+                levels[problem["problemId"]] = problem["level"]
 
-        print(start)
+            print(start)
 
-        if len(levels) == problem_count:
-            break
+            if len(levels) == problem_count:
+                break
+        except Exception as exception:
+            print(exception)
+        finally:
+            time.sleep(15)
 
-    data_js = open("../data.js", "w")
+    data_js = open("../scripts/data.js", "w")
     data_js.write("const LEVELS = " + json.dumps(levels, indent=2) + "\n")
     data_js.close()
 
