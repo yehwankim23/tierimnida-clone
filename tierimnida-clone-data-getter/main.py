@@ -15,7 +15,7 @@ def main():
 
     levels = dict()
 
-    for start in range(1000, 31000, 100):
+    for start in range(1000, 31100, 100):
         # noinspection PyBroadException
         try:
             response = requests.get(api + "problem/lookup", headers=headers, params={
@@ -31,7 +31,7 @@ def main():
         except Exception as exception:
             print("\n" + str(exception))
         finally:
-            time.sleep(15)
+            time.sleep(5)
 
     levels_length = len(levels)
     print("\nlevels_length: " + str(levels_length))
