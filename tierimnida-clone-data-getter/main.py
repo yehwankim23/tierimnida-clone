@@ -13,25 +13,22 @@ def main():
     problem_count = requests.get(api + "site/stats", headers=headers).json()["problemCount"]
     print("problem_count: " + str(problem_count) + "\n")
 
+    start = 1000
     levels = dict()
 
-    for start in range(1000, 31100, 100):
-        # noinspection PyBroadException
-        try:
-            response = requests.get(api + "problem/lookup", headers=headers, params={
-                "problemIds": ",".join([str(x) for x in range(start, start + 100)])}).json()
+    while True:
+        response = requests.get(api + "problem/lookup", headers=headers, params={
+            "problemIds": ",".join([str(x) for x in range(start, start + 100)])}).json()
 
-            for problem in response:
-                levels[problem["problemId"]] = problem["level"]
+        if not response:
+            break
 
-            print(start, end=" ")
+        for problem in response:
+            levels[problem["problemId"]] = problem["level"]
 
-            if len(levels) == problem_count:
-                break
-        except Exception as exception:
-            print("\n" + str(exception))
-        finally:
-            time.sleep(5)
+        print(start, end=" ")
+        start += 100
+        time.sleep(5)
 
     levels_length = len(levels)
     print("\nlevels_length: " + str(levels_length))
