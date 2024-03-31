@@ -24,11 +24,13 @@ function getInnerHTMLs() {
     let innerHTML = "";
 
     for (const problem of problems) {
-      innerHTML += `<a href="/problem/${problem.id}" class="${problem.class}" style="color: #${
+      const problemId = problem.id;
+
+      innerHTML += `<a href="/problem/${problemId}" class="${problem.class}" style="color: #${
         ["404040", "ad5600", "435f7a", "ec9a00", "27e2a4", "00b4fc", "ff0062", "a0a0a0"][
           Math.floor((Math.abs(problem.level) - 1) / 5) + 1
         ]
-      } !important">${problem.id}</a> `;
+      } !important">${problemId < 10000 ? "0" : ""}${problemId}</a> `;
     }
 
     innerHTMLs.push(innerHTML);
