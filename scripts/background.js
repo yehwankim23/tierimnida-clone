@@ -1,8 +1,20 @@
 async function setSortByLevel(sortByLevel) {
   await chrome.storage.local.set({ sortByLevel: sortByLevel }).then(() => {
-    chrome.action.setBadgeText({ text: sortByLevel ? "ON" : "OFF" });
-    chrome.action.setBadgeTextColor({ color: "white" });
-    chrome.action.setBadgeBackgroundColor({ color: sortByLevel ? "green" : "gray" });
+    chrome.action.setIcon({
+      path: sortByLevel
+        ? {
+            16: "../images/sorted-16.png",
+            32: "../images/sorted-32.png",
+            48: "../images/sorted-48.png",
+            128: "../images/sorted-128.png",
+          }
+        : {
+            16: "../images/unsorted-16.png",
+            32: "../images/unsorted-32.png",
+            48: "../images/unsorted-48.png",
+            128: "../images/unsorted-128.png",
+          },
+    });
   });
 }
 

@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
   "name": "TIERIMNIDA 클론",
-  "version": "2024.4",
+  "version": "2024.4.13",
 
   "action": {},
   "description": "백준 온라인 저지 문제 번호에 solved.ac 티어 색을 칠해주는 크롬 확장 프로그램",
   "icons": {
-    "16": "images/icon-16.png",
-    "32": "images/icon-32.png",
-    "48": "images/icon-48.png",
-    "128": "images/icon-128.png"
+    "16": "images/sorted-16.png",
+    "32": "images/sorted-32.png",
+    "48": "images/sorted-48.png",
+    "128": "images/sorted-128.png"
   },
 
   "author": "김예환 Ye-Hwan Kim (Sam)",
