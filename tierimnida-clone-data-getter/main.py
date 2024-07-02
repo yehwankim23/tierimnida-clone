@@ -10,8 +10,12 @@ headers = {"Accept": "application/json"}
 def main():
     global api, headers
 
-    problem_count = requests.get(api + "site/stats", headers=headers).json()["problemCount"]
-    print("problem_count: " + str(problem_count) + "\n")
+    try:
+        problem_count = requests.get(api + "site/stats", headers=headers).json()["problemCount"]
+        print("problem_count: " + str(problem_count) + "\n")
+    except requests.ConnectionError:
+        print("ConnectionError")
+        return
 
     start = 1000
     levels = dict()
