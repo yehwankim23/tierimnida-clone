@@ -28,7 +28,7 @@ def main():
 
         print(start, end=" ")
         start += 100
-        time.sleep(5)
+        time.sleep(10)
 
     levels_length = len(levels)
     print("\nlevels_length: " + str(levels_length))
