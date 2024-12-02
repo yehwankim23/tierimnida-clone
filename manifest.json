@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TIERIMNIDA 클론",
-  "version": "2024.11",
+  "version": "2024.12",
 
   "action": {},
   "description": "백준 온라인 저지 문제 번호에 solved.ac 티어 색을 칠해주는 크롬 확장 프로그램",
