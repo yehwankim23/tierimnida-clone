@@ -3,12 +3,10 @@ import time
 
 import requests
 
-api = "https://solved.ac/api/v3/"
-headers = {"Accept": "application/json"}
-
 
 def main():
-    global api, headers
+    api = "https://solved.ac/api/v3/"
+    headers = {"Accept": "application/json"}
 
     problem_count = requests.get(api + "site/stats", headers=headers).json()["problemCount"]
     print("problem_count: " + str(problem_count) + "\n")
@@ -17,18 +15,23 @@ def main():
     levels = dict()
 
     while True:
-        response = requests.get(api + "problem/lookup", headers=headers, params={
-            "problemIds": ",".join([str(x) for x in range(start, start + 100)])}).json()
+        try:
+            response = requests.get(api + "problem/lookup", headers=headers, params={
+                "problemIds": ",".join([str(x) for x in range(start, start + 100)])}).json()
 
-        if not response:
-            break
+            if not response:
+                break
 
-        for problem in response:
-            levels[problem["problemId"]] = problem["level"]
+            for problem in response:
+                levels[problem["problemId"]] = problem["level"]
 
-        print(start, end=" ")
-        start += 100
-        time.sleep(10)
+            print(start, end="\t")
+            start += 100
+
+            if start % 1000 == 0:
+                print()
+        finally:
+            time.sleep(5)
 
     levels_length = len(levels)
     print("\nlevels_length: " + str(levels_length))
