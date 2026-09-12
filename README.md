@@ -2,6 +2,9 @@
 
 [백준 온라인 저지](https://www.acmicpc.net) 문제 번호에 [solved.ac](https://solved.ac) 티어 색을 칠해주는 크롬 확장 프로그램
 
+> [!IMPORTANT]
+> [백준 온라인 저지 서비스 종료](https://web.archive.org/web/20260415203808/https://www.acmicpc.net/board/view/165799)
+
 ## 미리 보기
 
 ![미리 보기 (난이도순 정렬)](preview-sorted.png)
